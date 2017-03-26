@@ -231,6 +231,7 @@ function is_correct(str)
 	{
 		if (str[i] == '(') par++;
 		if (str[i] == ')') par--;
+		if (operators.has(str[i]) && (str[i]!='-') && ((str[i-1]=='(') || (i==0))) return false;
 	}
 	
 	return par == 0;
@@ -327,6 +328,11 @@ function preliminary_transform(some_string)
 	
 	for (var j=0; j<result_string.length; j++)
 	{
+		if ((result_string[j] == '-') && (result_string[j-1]=='('))
+		{
+			result_string=result_string.slice(0,j) + '0' + result_string.slice(j,result_string.length);
+			j++;
+		}
 		if ((result_string[j] == '*') || (result_string[j] == '/') || (result_string[j] == '%'))
 		{
 			result_string = insert_brackets(result_string, j);
