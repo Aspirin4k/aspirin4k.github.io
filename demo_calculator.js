@@ -328,6 +328,23 @@ function preliminary_transform(some_string)
 	
 	for (var j=0; j<result_string.length; j++)
 	{
+		// Если знака операции перед/после скобки не стоит, то вставим умножение
+		if ((!operators.has(result_string[j])) && (result_string[j] != ')') && (result_string[j-1]==')'))
+		{
+			result_string=result_string.slice(0,j) + '*' + result_string.slice(j,result_string.length);
+			insert_brackets(result_string,j);
+			j+=2;
+		}
+		if ((j!=0) && (result_string[j]=='(') && (result_string[j-1] != '(') && (!operators.has(result_string[j-1])))
+		{
+			result_string=result_string.slice(0,j) + '*' + result_string.slice(j,result_string.length);
+			insert_brackets(result_string,j);
+			j+=2;
+		}
+	}
+	
+	for (var j=0; j<result_string.length; j++)
+	{
 		if ((result_string[j] == '-') && (result_string[j-1]=='('))
 		{
 			result_string=result_string.slice(0,j) + '0' + result_string.slice(j,result_string.length);
