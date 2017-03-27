@@ -1,11 +1,11 @@
-document.addEventListener("keydown",key_down);
+п»їdocument.addEventListener("keydown",key_down);
 
-// Множество операторов
+// РњРЅРѕР¶РµСЃС‚РІРѕ РѕРїРµСЂР°С‚РѕСЂРѕРІ
 var operators = new Set(['+', '-', '/', '*', '%']);
-// Логическая переменная, определяющая, что хранится в текстовом поле
+// Р›РѕРіРёС‡РµСЃРєР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ, РѕРїСЂРµРґРµР»СЏСЋС‰Р°СЏ, С‡С‚Рѕ С…СЂР°РЅРёС‚СЃСЏ РІ С‚РµРєСЃС‚РѕРІРѕРј РїРѕР»Рµ
 var filed_contains_result = false;
 
-// Лист дерева
+// Р›РёСЃС‚ РґРµСЂРµРІР°
 function Node(val)
 {
 	this.val = val;
@@ -14,20 +14,20 @@ function Node(val)
 	this.right = null;
 }
 
-// Корень
+// РљРѕСЂРµРЅСЊ
 function Tree(val)
 {
 	var node = new Node(val);
 	this.root = node;
 }
 
-// Событие нажатия клавиши
+// РЎРѕР±С‹С‚РёРµ РЅР°Р¶Р°С‚РёСЏ РєР»Р°РІРёС€Рё
 function key_down(ev_param)
 {
 	new_input(ev_param.keyCode, ev_param.shiftKey);
 }
 
-// Добавляем символ в строку ввода
+// Р”РѕР±Р°РІР»СЏРµРј СЃРёРјРІРѕР» РІ СЃС‚СЂРѕРєСѓ РІРІРѕРґР°
 function new_input(code, shift_pressed)
 {
 	if (filed_contains_result)
@@ -35,8 +35,8 @@ function new_input(code, shift_pressed)
 		tbResult.value = "";
 		filed_contains_result = false;
 	}
-	// Т.к. код клавиши, а не символа - необходимо отличать их с помощью шифта
-	// + функциональные клавиши
+	// Рў.Рє. РєРѕРґ РєР»Р°РІРёС€Рё, Р° РЅРµ СЃРёРјРІРѕР»Р° - РЅРµРѕР±С…РѕРґРёРјРѕ РѕС‚Р»РёС‡Р°С‚СЊ РёС… СЃ РїРѕРјРѕС‰СЊСЋ С€РёС„С‚Р°
+	// + С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Рµ РєР»Р°РІРёС€Рё
 	switch (code)
 	{
 		case 8:
@@ -194,7 +194,7 @@ function new_input(code, shift_pressed)
 	}
 }
 
-// Некоторая обработка ввода. Чтобы было невозможно поставить 2 оператора подряд
+// РќРµРєРѕС‚РѕСЂР°СЏ РѕР±СЂР°Р±РѕС‚РєР° РІРІРѕРґР°. Р§С‚РѕР±С‹ Р±С‹Р»Рѕ РЅРµРІРѕР·РјРѕР¶РЅРѕ РїРѕСЃС‚Р°РІРёС‚СЊ 2 РѕРїРµСЂР°С‚РѕСЂР° РїРѕРґСЂСЏРґ
 function try_insert_symbol(str, symbol)
 {
 	if (operators.has(str[str.length-1]))
@@ -207,7 +207,7 @@ function try_insert_symbol(str, symbol)
 		}
 }
 
-// Некоторая обработка ввода. Обработка постановки точки
+// РќРµРєРѕС‚РѕСЂР°СЏ РѕР±СЂР°Р±РѕС‚РєР° РІРІРѕРґР°. РћР±СЂР°Р±РѕС‚РєР° РїРѕСЃС‚Р°РЅРѕРІРєРё С‚РѕС‡РєРё
 function try_insert_dot(str)
 {
 	var no_dot_found = true;
@@ -222,8 +222,8 @@ function try_insert_dot(str)
 		return str;
 }
 
-// Если число открывающихся скобок больше/меньше закрывающихся, 
-// то делать какие-либо вычисления не имеет смысла
+// Р•СЃР»Рё С‡РёСЃР»Рѕ РѕС‚РєСЂС‹РІР°СЋС‰РёС…СЃСЏ СЃРєРѕР±РѕРє Р±РѕР»СЊС€Рµ/РјРµРЅСЊС€Рµ Р·Р°РєСЂС‹РІР°СЋС‰РёС…СЃСЏ, 
+// С‚Рѕ РґРµР»Р°С‚СЊ РєР°РєРёРµ-Р»РёР±Рѕ РІС‹С‡РёСЃР»РµРЅРёСЏ РЅРµ РёРјРµРµС‚ СЃРјС‹СЃР»Р°
 function is_correct(str)
 {
 	var par=0;
@@ -231,28 +231,31 @@ function is_correct(str)
 	{
 		if (str[i] == '(') par++;
 		if (str[i] == ')') par--;
+		// Р•СЃР»Рё СЃР»РµРІР° РѕС‚ РѕРїРµСЂР°С‚РѕСЂР° РѕС‚РєСЂС‹РІР°СЋС‰Р°СЏСЃСЏ СЃРєРѕР±РєР°, С‚Рѕ СЌС‚Рѕ РѕС€РёР±РєР° (РСЃРєР»СЋС‡РµРЅРёРµ - СѓРЅР°СЂРЅС‹Р№ РјРёРЅСѓСЃ)
 		if (operators.has(str[i]) && (str[i]!='-') && ((str[i-1]=='(') || (i==0))) return false;
+		// Р•СЃР»Рё СЃРїСЂР°РІР° РѕС‚ РѕРїРµСЂР°С‚РѕСЂР° Р·Р°РєСЂС‹РІР°СЋС‰Р°СЏСЃСЏ СЃРєРѕР±РєР°, С‚Рѕ СЌС‚Рѕ РѕС€РёР±РєР°
+		if (operators.has(str[i]) && ((i==str.length-1) || (str[i+1]==')'))) return false;
 	}
 	
 	return par == 0;
 }
 
-// Вычисление выражения
+// Р’С‹С‡РёСЃР»РµРЅРёРµ РІС‹СЂР°Р¶РµРЅРёСЏ
 function calculate()
 {
 	var con = tbResult.value;
 	if (!is_correct(con))
 	{
-		tbResult.value = "Ошибка";
+		tbResult.value = "РћС€РёР±РєР°";
 		filed_contains_result = true;
 		return;
 	}
 	
-	// Предварительные вычисления
+	// РџСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рµ РІС‹С‡РёСЃР»РµРЅРёСЏ
 	con = preliminary_transform(tbResult.value);
 	tbResult.value = "";
 	
-	// Строим синтаксическое дерево
+	// РЎС‚СЂРѕРёРј СЃРёРЅС‚Р°РєСЃРёС‡РµСЃРєРѕРµ РґРµСЂРµРІРѕ
 	var tree = new Tree("");
 	var currentNode = tree.root;
 
@@ -313,22 +316,22 @@ function calculate()
 		alert(er);
 	}
 	
-	// Оптимизируем дерево - уберем лишние скобки
+	// РћРїС‚РёРјРёР·РёСЂСѓРµРј РґРµСЂРµРІРѕ - СѓР±РµСЂРµРј Р»РёС€РЅРёРµ СЃРєРѕР±РєРё
 	tree.root = optimize_tree(tree.root);
 	
-	// Вычислим выражение
+	// Р’С‹С‡РёСЃР»РёРј РІС‹СЂР°Р¶РµРЅРёРµ
 	tbResult.value = calc_tree(tree.root);
 	filed_contains_result = true;
 }
 
-// Предварительные вычисления. Обернем *,% и / в скобки
+// РџСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рµ РІС‹С‡РёСЃР»РµРЅРёСЏ. РћР±РµСЂРЅРµРј *,% Рё / РІ СЃРєРѕР±РєРё
 function preliminary_transform(some_string)
 {
 	var result_string = '(' + some_string + ')';
 	
 	for (var j=0; j<result_string.length; j++)
 	{
-		// Если знака операции перед/после скобки не стоит, то вставим умножение
+		// Р•СЃР»Рё Р·РЅР°РєР° РѕРїРµСЂР°С†РёРё РїРµСЂРµРґ/РїРѕСЃР»Рµ СЃРєРѕР±РєРё РЅРµ СЃС‚РѕРёС‚, С‚Рѕ РІСЃС‚Р°РІРёРј СѓРјРЅРѕР¶РµРЅРёРµ
 		if ((!operators.has(result_string[j])) && (result_string[j] != ')') && (result_string[j-1]==')'))
 		{
 			result_string=result_string.slice(0,j) + '*' + result_string.slice(j,result_string.length);
@@ -353,7 +356,7 @@ function preliminary_transform(some_string)
 		if ((result_string[j] == '*') || (result_string[j] == '/') || (result_string[j] == '%'))
 		{
 			result_string = insert_brackets(result_string, j);
-			// Слева вставили скобку, надо сместить итератор вправо
+			// РЎР»РµРІР° РІСЃС‚Р°РІРёР»Рё СЃРєРѕР±РєСѓ, РЅР°РґРѕ СЃРјРµСЃС‚РёС‚СЊ РёС‚РµСЂР°С‚РѕСЂ РІРїСЂР°РІРѕ
 			j++;
 		}
 	}
@@ -361,12 +364,12 @@ function preliminary_transform(some_string)
 	return result_string;
 }
 
-// Функция оборачивания выражения в скобки
+// Р¤СѓРЅРєС†РёСЏ РѕР±РѕСЂР°С‡РёРІР°РЅРёСЏ РІС‹СЂР°Р¶РµРЅРёСЏ РІ СЃРєРѕР±РєРё
 function insert_brackets(some_string, position)
 {
-	// Количество открытых/закрытых скобок
+	// РљРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РєСЂС‹С‚С‹С…/Р·Р°РєСЂС‹С‚С‹С… СЃРєРѕР±РѕРє
 	var par;
-	// Позиция в строке
+	// РџРѕР·РёС†РёСЏ РІ СЃС‚СЂРѕРєРµ
 	var i;
 	
 	par = 0;
@@ -375,7 +378,7 @@ function insert_brackets(some_string, position)
 			if (some_string[i]==')') par++;
 			if (some_string[i]=='(') par--;
 		}
-	if (i<0) throw ("Ошибка в левой части операции в позиции " + position + " (Лишние скобки?)");
+	if (i<0) throw ("РћС€РёР±РєР° РІ Р»РµРІРѕР№ С‡Р°СЃС‚Рё РѕРїРµСЂР°С†РёРё РІ РїРѕР·РёС†РёРё " + position + " (Р›РёС€РЅРёРµ СЃРєРѕР±РєРё?)");
 	some_string=some_string.slice(0,i+1) + '(' + some_string.slice(i+1,some_string.length);
 	par = 0;
 	for (i=position+2; (i<some_string.length) && (!operators.has(some_string[i]) && (some_string[i]!=')') || (par>0)); i++)
@@ -383,13 +386,13 @@ function insert_brackets(some_string, position)
 			if (some_string[i]=='(') par++;
 			if (some_string[i]==')') par--;
 		}
-	if (i>=some_string.length) throw ("Ошибка в правой части операции в позиции " + position + " (Лишние скобки?)");
+	if (i>=some_string.length) throw ("РћС€РёР±РєР° РІ РїСЂР°РІРѕР№ С‡Р°СЃС‚Рё РѕРїРµСЂР°С†РёРё РІ РїРѕР·РёС†РёРё " + position + " (Р›РёС€РЅРёРµ СЃРєРѕР±РєРё?)");
 	some_string=some_string.slice(0,i) + ')' + some_string.slice(i,some_string.length);
 	
 	return some_string;
 }
 
-// Оптимизация дерева
+// РћРїС‚РёРјРёР·Р°С†РёСЏ РґРµСЂРµРІР°
 function optimize_tree(node)
 {
 	if (node==null) return null;
@@ -404,7 +407,7 @@ function optimize_tree(node)
 	return node;
 }
 
-// Вычисление дерева
+// Р’С‹С‡РёСЃР»РµРЅРёРµ РґРµСЂРµРІР°
 function calc_tree(node)
 {
 	switch(node.val)
