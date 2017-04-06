@@ -260,6 +260,8 @@ function calculate()
 	con = preliminary_transform(tbResult.value);
 	tbResult.value = "";
 	
+	alert(con);
+	
 	// Строим синтаксическое дерево
 	var tree = new Tree("");
 	var currentNode = tree.root;
@@ -302,6 +304,30 @@ function calculate()
 						currentNode = currentNode.parent;
 						substr="";
 					}
+					
+					if (currentNode.val != "")
+					{
+						tempNode = new Node("");
+						tempNode.left = currentNode;
+						tempNode.parent = currentNode.parent;
+						if (currentNode.parent == null)
+						{
+							tree.root = tempNode;
+						}
+						else
+						{
+							if (currentNode.parent.left == currentNode)
+							{
+								currentNode.parent.left = tempNode;
+							}
+							else
+							{
+								currentNode.parent.right = tempNode;
+							}
+						}
+						currentNode = tempNode;
+					}
+					
 					currentNode.val=con[i];
 					currentNode.right = new Node("");
 					currentNode.right.parent = currentNode;
