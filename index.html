@@ -1,0 +1,106 @@
+﻿<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Калькулятор</title>
+	<script src="demo_calculator.js"></script>	
+	<style>
+		input {
+			border-radius: 5px;
+		}
+		.calc_button {
+			width: 32px;
+		}
+		.calc_res_field {
+			width: 160px;
+			text-align: right;
+		}
+		td {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<form name="calculator">
+		<table>
+			<tr>
+				<td colspan="4">
+					<input type="text" class="calc_res_field" id="tbResult" readonly>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" class="calc_button" value="(" onClick="new_input(57,true)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value=")" onClick="new_input(48,true)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value="%" onClick="new_input(53,true)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value="*" onClick="new_input(56,true)">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" class="calc_button" value="7" onClick="new_input(55,false)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value="8" onClick="new_input(56,false)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value="9" onClick="new_input(57,false)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value="/" onClick="new_input(111,false)">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" class="calc_button" value="4" onClick="new_input(52,false)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value="5" onClick="new_input(53,false)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value="6" onClick="new_input(54,false)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value="+" onClick="new_input(187,true)">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" class="calc_button" value="1" onClick="new_input(49,false)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value="2" onClick="new_input(50,false)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value="3" onClick="new_input(51,false)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value="-" onClick="new_input(189,false)">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" class="calc_button" value="0" onClick="new_input(48,false)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value="," onClick="new_input(188,false)">
+				</td>
+				<td>
+					<input type="button" class="calc_button"value="CE" onClick="new_input(46,false)">
+				</td>
+				<td>
+					<input type="button" class="calc_button" value="=" onClick="new_input(13,false)">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+
+</html>
