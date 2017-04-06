@@ -261,8 +261,6 @@ function calculate()
 	con = preliminary_transform(tbResult.value);
 	tbResult.value = "";
 	
-	alert(con);
-	
 	// Строим синтаксическое дерево
 	var tree = new Tree("");
 	var currentNode = tree.root;
