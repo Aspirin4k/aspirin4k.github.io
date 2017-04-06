@@ -24,6 +24,7 @@ function Tree(val)
 // Событие нажатия клавиши
 function key_down(ev_param)
 {
+	ev_param.preventDefault();
 	new_input(ev_param.keyCode, ev_param.shiftKey);
 }
 
@@ -259,6 +260,8 @@ function calculate()
 	// Предварительные вычисления
 	con = preliminary_transform(tbResult.value);
 	tbResult.value = "";
+	
+	alert(con);
 	
 	// Строим синтаксическое дерево
 	var tree = new Tree("");
